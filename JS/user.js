@@ -15,19 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// This function sees to the submission of the form if all validations are met //
-function submitForm() {
-    var form = document.getElementById('myForm');
-    if (form.checkValidity()) {
-        // If the form is valid, submit it
-        form.submit();
-    } else {
-        // If the form is not valid, trigger validation and show error messages
-        form.classList.add('was-validated');
-    }
-}
-
-// This function creates pull data from the form and creates a JSON data as well as logging in into the console
+// this function submits the form and also makes a POST request using FEtch API
 function submitForm() {
     var form = document.getElementById('myForm');
     if (form.checkValidity()) {
@@ -36,7 +24,7 @@ function submitForm() {
             firstname: document.getElementById('firstname').value,
             lastname: document.getElementById('lastname').value,
             email: document.getElementById('email').value,
-            phone: document.getElementById('phonenumber').value,
+            phonenumber: document.getElementById('phonenumber').value,
             address: document.getElementById('address').value,
             age: document.getElementById('age').value,
             dateofbirth: document.getElementById('dateofbirth').value,
@@ -54,53 +42,53 @@ function submitForm() {
         // Make a POST request using Fetch API
 
         /* fetch('https://myfunapi.fake/user/signup', {
-        method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+                method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
 
-                body: jsonData
-            })
-    .then(response => response.json())
-        .then(data => {
-            // Handle the response data as needed
-            console.log('API response:', data);
-        })
-        .catch(error => {
-            // Handle errors during the request
-            console.error('Error:', error);
-        }); */
+                        body: jsonData
+                    })
+            .then(response => response.json())
+                .then(data => {
+                    // Handle the response data as needed
+                    console.log('API response:', data);
+                })
+                .catch(error => {
+                    // Handle errors during the request
+                    console.error('Error:', error);
+                }); */
 
-        // Log the JSON data 
+        // Log the JSON data
         console.log(jsonData);
     } else {
         // If the form is not valid, trigger validation and show error messages
         form.classList.add('was-validated');
     }
 
-}
 
 
-// Fake UserHelper library for mock purposes
-const UserHelper = {
-    createUser: function() {
-        // This simulates creating a new user object in the database
-        console.log('User object created in the database');
-        return { userId: 'mockUserId' };
-    },
-    readUserData: function(userId) {
-        // This simulates reading user data from the database
-        console.log('Reading user data for userId:', userId);
-        return { firstname: 'John Doe', email: 'john.doe@example.com' };
-    },
-    saveUser: function(userId, userData) {
-        // This simulates saving user data to the database
-        console.log('Saving user data for userId:', userId, 'Data:', userData);
-        return true; // Assume success for the mock
-    }
-};
 
-// MockAPI function
-function mockAPI(jsonData) {
+    // Fake UserHelper library for mock purposes
+    const UserHelper = {
+        createUser: function() {
+            // This simulates creating a new user object in the database
+            console.log('User object created in the database');
+            return { userId: 'mockUserId' };
+        },
+        readUserData: function(userId) {
+            // This simulates reading user data from the database
+            console.log('Reading user data for userId:', userId);
+            return { firstname: 'John Doe', email: 'john.doe@example.com' };
+        },
+        saveUser: function(userId, userData) {
+            // This simulates saving user data to the database
+            console.log('Saving user data for userId:', userId, 'Data:', userData);
+            return true; // Assume success for the mock
+        }
+    };
+
+    // MockAPI function
+    /* function mockAPI(jsonData) {
     // Return object with initial values
     const response = { message: '', result: false };
 
@@ -128,8 +116,6 @@ function mockAPI(jsonData) {
         newUser.city = jsonData.city;
         newUser.zip = jsonData.zip;
 
-
-
         // Save the user object
         const saveResult = UserHelper.saveUser(newUser.userId, newUser);
 
@@ -149,9 +135,14 @@ function mockAPI(jsonData) {
         response.message = 'An unexpected error occurred.';
         return response;
     }
+} */
+
+    function mockAPI(jsonData) {
+        // Return object indicating success
+        return { message: 'User data saved successfully.', result: true };
+    }
+
 }
-
-
 const apiResponse = mockAPI(jsonData);
 console.log(apiResponse);
 
@@ -165,27 +156,9 @@ class User {
     }
 
     // Setter method for the 'name' field
-    setName(value) {
+    setField(fieldName, value) {
         if (typeof value === 'string') {
-            this.firstname = value;
-            return true;
-        }
-        return false;
-    }
-
-    // Setter method for the 'email' field
-    setEmail(value) {
-        if (typeof value === 'string') {
-            this.email = value;
-            return true;
-        }
-        return false;
-    }
-
-    // Setter method for the 'address' field
-    setAddress(value) {
-        if (typeof value === 'string') {
-            this.address = value;
+            this[fieldName] = value;
             return true;
         }
         return false;
@@ -196,13 +169,13 @@ class User {
 // Example usage
 const myUser = new User();
 
-const nameSetSuccessful = myUser.setName('John Doe');
+const nameSetSuccessful = myUser.setField('firstname', 'John Doe');
 console.log('Name set successful:', nameSetSuccessful);
 
-const emailSetSuccessful = myUser.setEmail('john.doe@example.com');
+const emailSetSuccessful = myUser.setField('email', 'john.doe@example.com');
 console.log('Email set successful:', emailSetSuccessful);
 
-const addressSetSuccessful = myUser.setAddress('1234 Fake St');
+const addressSetSuccessful = myUser.setField('address', '1234 Fake St');
 console.log('Address set successful:', addressSetSuccessful);
 
 // Check the user object
