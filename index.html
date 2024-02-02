@@ -131,7 +131,9 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit form</button>
+            <a src="./submit.html">
+                <button type="submit" class="btn btn-primary">Submit form</button>
+            </a>
         </form>
     </div>
 
@@ -143,34 +145,3 @@
 </body>
 
 </html>
-
-
-<script>
-    // the JavaScript code here is for disabling form submissions if there are invalid fields
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fetch all the forms that need custom Bootstrap validation styles
-        var forms = document.getElementsByClassName('needs-validation');
-
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    });
-
-    function submitForm() {
-        var form = document.getElementById('myForm');
-        if (form.checkValidity()) {
-            // If the form is valid, submit it
-            form.submit();
-        } else {
-            // If the form is not valid, trigger validation and show error messages
-            form.classList.add('was-validated');
-        }
-    }
-</script>
