@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Sign Up Form</title>
+    <!-- This section contains the Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<style>
+    body {
+        background-image: linear-gradient(150deg, #e2c35d, #d88771);
+    }
+</style>
+
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Blue Step User Sign Up Form</h2>
+
+        <form id="myForm" class="needs-validation" novalidate>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstname" placeholder="First name" required>
+                    <div class="invalid-feedback">
+                        Please enter a first name
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="lastname">Last name</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                    <div class="valid-feedback">
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="emailaddress">Email Address</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="emailaddRess">@</span>
+                        </div>
+                        <input type="email" class="form-control" id="emailaddress" placeholder="Enter your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phonenumber" placeholder="Phone Number" required pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}">
+                    <div class="invalid-feedback">
+                        Please enter a valid phone number.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Address" autocomplete="on" required>
+                    <div class="valid-feedback">
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age" placeholder="Age">
+                    <div class="valid-feedback">
+
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="dateofbirth">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dateofbirth" required>
+                    <div class="invalid-feedback">
+                        Please provide your date of birth.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="emergencycontact">Emergency Contact Name</label>
+                    <input type="text" class="form-control" id="emergencycontact" required>
+                    <div class="invalid-feedback">
+                        Please provide an emergency contact name.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="emergencyemail">Emergency Email Address</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="emergencY1">@</span>
+                        </div>
+                        <input type="email" class="form-control" id="emergencyemail" placeholder="Enter your emergency contact email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <div class="invalid-feedback">
+                            Please provide an email address.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" placeholder="Country" autocomplete="on" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid country.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid city.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" placeholder="Zip">
+                    <div class="valid-feedback">
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit form</button>
+        </form>
+    </div>
+
+    <!-- This section adds the Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./JS/user.js"></script>
+</body>
+
+</html>
+
+
+<script>
+    // the JavaScript code here is for disabling form submissions if there are invalid fields
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch all the forms that need custom Bootstrap validation styles
+        var forms = document.getElementsByClassName('needs-validation');
+
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    });
+
+    function submitForm() {
+        var form = document.getElementById('myForm');
+        if (form.checkValidity()) {
+            // If the form is valid, submit it
+            form.submit();
+        } else {
+            // If the form is not valid, trigger validation and show error messages
+            form.classList.add('was-validated');
+        }
+    }
+</script>
