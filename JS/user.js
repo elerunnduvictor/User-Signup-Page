@@ -131,7 +131,7 @@ function mockAPI(jsonData) {
 
 
         // Save the user object
-        const saveResult = UserHelper.saveUser(newUser.userId, newUser); * /
+        const saveResult = UserHelper.saveUser(newUser.userId, newUser);
 
         // Check for errors during save
         if (!saveResult) {
