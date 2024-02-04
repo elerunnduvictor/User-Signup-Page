@@ -43,19 +43,19 @@ function submitForm() {
 
         /* fetch('https://myfunapi.fake/user/signup', {
                 method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-
-                        body: jsonData
-                    })
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: jsonData,
+            })
             .then(response => response.json())
-                .then(data => {
-                    // Handle the response data as needed
-                    console.log('API response:', data);
-                })
-                .catch(error => {
-                    // Handle errors during the request
-                    console.error('Error:', error);
+            .then(data => {
+                // Handle the response data as needed
+                console.log('API response:', data);
+            })
+            .catch(error => {
+                // Handle errors during the request
+                console.error('Error:', error);
                 }); */
 
         // Log the JSON data
@@ -68,24 +68,24 @@ function submitForm() {
 
 
 
-    // Fake UserHelper library for mock purposes
-    const UserHelper = {
-        createUser: function() {
-            // This simulates creating a new user object in the database
-            console.log('User object created in the database');
-            return { userId: 'mockUserId' };
-        },
-        readUserData: function(userId) {
-            // This simulates reading user data from the database
-            console.log('Reading user data for userId:', userId);
-            return { firstname: 'John Doe', email: 'john.doe@example.com' };
-        },
-        saveUser: function(userId, userData) {
-            // This simulates saving user data to the database
-            console.log('Saving user data for userId:', userId, 'Data:', userData);
-            return true; // Assume success for the mock
-        }
-    };
+    /*  // Fake UserHelper library for mock purposes
+      const UserHelper = {
+          createUser: function() {
+              // This simulates creating a new user object in the database
+              console.log('User object created in the database');
+              return { userId: 'mockUserId' };
+          },
+          readUserData: function(userId) {
+              // This simulates reading user data from the database
+              console.log('Reading user data for userId:', userId);
+              return { firstname: 'John Doe', email: 'john.doe@example.com' };
+          },
+          saveUser: function(userId, userData) {
+              // This simulates saving user data to the database
+              console.log('Saving user data for userId:', userId, 'Data:', userData);
+              return true; // Assume success for the mock
+          }
+      }; */
 
     // MockAPI function
     /* function mockAPI(jsonData) {
@@ -146,26 +146,8 @@ function submitForm() {
 const apiResponse = mockAPI(jsonData);
 console.log(apiResponse);
 
-// User class definition
-class User {
-    constructor() {
-        // Initialize fields
-        this.firstname = '';
-        this.email = '';
-        this.address = '';
-    }
 
-    // Setter method for the 'name' field
-    setField(fieldName, value) {
-        if (typeof value === 'string') {
-            this[fieldName] = value;
-            return true;
-        }
-        return false;
-    }
-
-}
-
+/* 
 // Example usage
 const myUser = new User();
 
@@ -179,4 +161,4 @@ const addressSetSuccessful = myUser.setField('address', '1234 Fake St');
 console.log('Address set successful:', addressSetSuccessful);
 
 // Check the user object
-console.log('User object:', myUser);
+console.log('User object:', myUser); */
